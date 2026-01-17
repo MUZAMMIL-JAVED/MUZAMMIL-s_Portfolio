@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import dynamic from "next/dynamic";
 const Marquee = dynamic(() => import("react-fast-marquee"), { ssr: false });
 
@@ -8,30 +8,34 @@ import { SettingsContext } from "@/context/SettingsContext";
 
 //Custom components
 import TitleSection from "@/components/TitleSection";
-import { BodyText } from "@/styles/ui";
 
 //Icons
 import { QuotesLeft } from "@styled-icons/icomoon";
 import { StarFill } from "@styled-icons/bootstrap";
 
+const shimmer = keyframes`
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+`;
+
 const Container = styled.div`
-	width: 60%;
+    width: 60%;
 
-	@media (max-width: 1600px) {
-		width: 75%;
-	}
+    @media (max-width: 1600px) {
+        width: 75%;
+    }
 
-	@media (max-width: 1400px) {
-		width: 80%;
-	}
+    @media (max-width: 1400px) {
+        width: 80%;
+    }
 
-	@media (max-width: 1100px) {
-		width: 85%;
-	}
+    @media (max-width: 1100px) {
+        width: 85%;
+    }
 
-	@media (max-width: 900px) {
-		width: 90%;
-	}
+    @media (max-width: 900px) {
+        width: 90%;
+    }
 `;
 
 const Section = styled.section`
@@ -40,10 +44,60 @@ const Section = styled.section`
     justify-content: flex-start;
     flex-direction: column;
     width: 100%;
-    padding: 60px 0;
+    padding: 80px 0;
 
     @media (max-width: 601px) {
-        padding: 40px 0;
+        padding: 50px 0;
+    }
+`;
+
+const HeaderWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 48px;
+`;
+
+const SectionLabel = styled.span`
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: rgba(124, 92, 255, 0.1);
+    border: 1px solid rgba(124, 92, 255, 0.3);
+    border-radius: 50px;
+    color: ${(props) => props.theme.colors.branding};
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 20px;
+`;
+
+const SectionTitle = styled.h2`
+    color: ${(props) => props.theme.colors.title};
+    font-size: 48px;
+    font-weight: 900;
+    margin: 0 0 12px 0;
+    letter-spacing: -0.03em;
+
+    @media (max-width: 900px) {
+        font-size: 36px;
+    }
+
+    @media (max-width: 600px) {
+        font-size: 28px;
+    }
+`;
+
+const SectionSubtitle = styled.p`
+    color: ${(props) => props.theme.colors.subtitle};
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0;
+    line-height: 1.6;
+
+    @media (max-width: 600px) {
+        font-size: 14px;
     }
 `;
 
@@ -52,154 +106,157 @@ const Testimonial = styled.div`
     align-items: flex-start;
     justify-content: space-between;
     flex-direction: column;
-    width: 520px;
-    height: 100%;
-    min-height: 300px;
+    width: 420px;
+    min-height: 280px;
     margin-right: 24px;
-    padding: 22px;
-    border-radius: 8px;
-    background-color: ${(props) => props.theme.colors.backgroundSecondary};
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-    transition: transform 240ms ease, box-shadow 240ms ease;
-    /* Hint GPU compositing to reduce subpixel flicker during marquee movement */
+    padding: 28px;
+    border-radius: 20px;
+    background: ${(props) => props.theme.colors.backgroundSecondary};
+    border: 1px solid rgba(124, 92, 255, 0.1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
     will-change: transform;
     transform: translateZ(0);
 
-	&:hover {
-		transform: translateY(-4px);
-		box-shadow: 0 14px 30px rgba(0,0,0,0.08);
-	}
-	/* height: 100px; */
-	/* border: 1px solid ${(props) => props.theme.colors.inactiveTitle}; */
-
-	.quote-icon {
-		color: ${(props) => props.theme.colors.branding};
-		width: 44px;
-		height: 44px;
-		margin-bottom: 20px;
-	}
-
-    /* Quote text uses theme BodyText via component; keep spacing only */
-    .quote {
-        margin-bottom: 24px;
-    }
-
-    .user-star-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        flex-direction: row;
-
-		.stars-container {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-
-			.star {
-				width: 20px;
-				height: 20px;
-				color: ${(props) => props.theme.colors.inactiveTitle};
-			}
-
-			.star-filled {
-				color: ${(props) => props.theme.colors.branding};
-			}
-
-			.star-filled:nth-of-type(-n + 4) {
-				margin-right: 5px;
-			}
-		}
-
-            .user-container {
-                display: flex;
-                align-items: center;
-                justify-content: flex-start;
-                flex-direction: row;
-
-                .user-data {
-                    margin-left: 0;
-                    h4 {
-                        color: ${(props) => props.theme.colors.title};
-                        font-weight: 700;
-                    }
-                    span {
-                        color: ${(props) => props.theme.colors.body};
-                        font-weight: 400;
-                    }
-                }
-
-			@media (max-width: 601px) {
-				.user-data {
-					h4 {
-						font-size: 14px;
-					}
-
-					span {
-						font-size: 14px;
-					}
-                }
-            }
-        }
+    &:hover {
+        transform: translateY(-8px);
+        border-color: rgba(124, 92, 255, 0.3);
+        box-shadow: 0 20px 50px rgba(124, 92, 255, 0.1);
     }
 
     @media (max-width: 601px) {
-        width: 92%;
+        width: 320px;
+        min-height: 260px;
         margin-right: 16px;
-        padding: 16px;
-
-        .quote-icon {
-            width: 32px;
-            height: 32px;
-            margin-bottom: 16px;
-        }
-
-        .user-star-container {
-            .stars-container {
-                .star {
-                    width: 16px;
-                    height: 16px;
-                }
-            }
-        }
+        padding: 20px;
     }
+`;
+
+const QuoteIcon = styled.div`
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, ${(props) => props.theme.colors.branding} 0%, #00d4ff 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+
+    svg {
+        color: #fff;
+        width: 24px;
+        height: 24px;
+    }
+`;
+
+const QuoteText = styled.p`
+    color: ${(props) => props.theme.colors.body};
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 0 0 24px 0;
+    flex: 1;
+    font-style: italic;
+`;
+
+const ReviewerInfo = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: auto;
+`;
+
+const ReviewerDetails = styled.div`
+    display: flex;
+    flex-direction: column;
+
+    .name {
+        color: ${(props) => props.theme.colors.title};
+        font-weight: 700;
+        font-size: 16px;
+        margin-bottom: 2px;
+    }
+
+    .role {
+        color: ${(props) => props.theme.colors.subtitle};
+        font-size: 13px;
+    }
+`;
+
+const StarRating = styled.div`
+    display: flex;
+    gap: 4px;
+
+    .star {
+        width: 18px;
+        height: 18px;
+        color: ${(props) => props.theme.colors.backgroundTertiary};
+    }
+
+    .star-filled {
+        color: ${(props) => props.theme.colors.branding};
+    }
+`;
+
+const ProjectBadge = styled.span`
+    display: inline-flex;
+    padding: 4px 10px;
+    background: rgba(124, 92, 255, 0.1);
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    color: ${(props) => props.theme.colors.branding};
+    margin-top: 12px;
 `;
 
 const testimonials = [
     {
         quote:
-            "An impressive portfolio build—clean architecture, subtle motion, and a cohesive visual language that feels premium.",
+            "Muzammil's AI expertise transformed our plant monitoring system. The 95% accuracy in disease detection has saved our farm thousands in crop losses. Truly exceptional work!",
+        name: "Ahmed Hassan",
+        role: "Agricultural Tech Startup",
+        project: "AI/ML Project",
+        stars: 5,
+    },
+    {
+        quote:
+            "The web application Muzammil built exceeded our expectations. Clean architecture, smooth animations, and the codebase is incredibly maintainable. Highly recommended!",
         name: "Waleed Arif",
         role: "Business Developer",
+        project: "Full-Stack Web App",
         stars: 5,
     },
     {
         quote:
-            "We shipped faster than planned. Clear communication, attention to detail, and performance-first engineering.",
-        name: "Mia Thompson",
-        role: "Founder, SaaS Startup",
+            "Our Android app went from concept to Play Store in record time. Muzammil's attention to UX details and performance optimization made all the difference.",
+        name: "Sarah Thompson",
+        role: "Startup Founder",
+        project: "Mobile App Development",
         stars: 5,
     },
     {
         quote:
-            "Animations are tasteful and purposeful. The UI feels stable across devices and the codebase is maintainable.",
+            "The automation pipeline Muzammil designed cut our manual processing time by 80%. His LLM integration expertise is world-class.",
         name: "Lucas Ferreira",
-        role: "Tech Lead",
-        stars: 4,
-    },
-    {
-        quote:
-            "Design system integration was seamless. Colors, typography, and spacing matched the brand perfectly.",
-        name: "Sofia Ruiz",
-        role: "Design Director",
+        role: "Operations Director",
+        project: "Workflow Automation",
         stars: 5,
     },
     {
         quote:
-            "Pixel-accurate delivery with thoughtful refactors. It’s a modern, reliable showcase of work.",
-        name: "Muzammil Javed",
-        role: "Engineer",
+            "From design mockups to deployed application, the entire process was smooth. The gesture recognition system works flawlessly for our home automation needs.",
+        name: "Mia Chen",
+        role: "Smart Home Innovator",
+        project: "Computer Vision",
         stars: 4,
+    },
+    {
+        quote:
+            "Professional, responsive, and incredibly skilled. Muzammil delivered our e-commerce platform ahead of schedule with all the features we needed.",
+        name: "Sofia Ruiz",
+        role: "E-commerce Manager",
+        project: "Web Development",
+        stars: 5,
     },
 ];
 
@@ -208,32 +265,43 @@ export default function Testimonials() {
 
     return (
         <Section id="testimonials">
-            <TitleSection title={language.testimonialPage.title} subtitle={language.testimonialPage.subtitle} hasMarginBottom />
+            <HeaderWrapper>
+                <SectionLabel>
+                    <span>💬</span>
+                    Client Feedback
+                </SectionLabel>
+                <SectionTitle>What Clients Say</SectionTitle>
+                <SectionSubtitle>
+                    Don't just take my word for it. Here's what clients and
+                    collaborators have to say about working with me.
+                </SectionSubtitle>
+            </HeaderWrapper>
 
-            { }
-            <Marquee autoFill gradient={false} pauseOnHover direction="left" speed={30}>
+            <Marquee autoFill gradient={false} pauseOnHover direction="left" speed={35}>
                 {testimonials.map((t, index) => (
                     <Testimonial key={index}>
-                        <QuotesLeft className="quote-icon" />
+                        <QuoteIcon>
+                            <QuotesLeft />
+                        </QuoteIcon>
 
-                        <div className="quote">
-                            <BodyText>{t.quote}</BodyText>
-                        </div>
+                        <QuoteText>"{t.quote}"</QuoteText>
 
-                        <div className="user-star-container">
-                            <div className="user-container">
-                                <div className="user-data">
-                                    <h4>{t.name}</h4>
-                                    <span>{t.role}</span>
-                                </div>
-                            </div>
+                        <ReviewerInfo>
+                            <ReviewerDetails>
+                                <span className="name">{t.name}</span>
+                                <span className="role">{t.role}</span>
+                                <ProjectBadge>{t.project}</ProjectBadge>
+                            </ReviewerDetails>
 
-                            <div className="stars-container">
+                            <StarRating>
                                 {[...Array(5)].map((_, i) => (
-                                    <StarFill key={i} className={`star ${i < t.stars ? "star-filled" : ""}`} />
+                                    <StarFill
+                                        key={i}
+                                        className={`star ${i < t.stars ? "star-filled" : ""}`}
+                                    />
                                 ))}
-                            </div>
-                        </div>
+                            </StarRating>
+                        </ReviewerInfo>
                     </Testimonial>
                 ))}
             </Marquee>

@@ -1,278 +1,190 @@
 import React, { useState, useEffect, useContext } from "react";
-import styled from "styled-components";
-import Link from "next/link";
+import styled, { keyframes } from "styled-components";
 
 import { SettingsContext } from "@/context/SettingsContext";
-
 import SocialNetworkRowStack from "@/components/SocialNetworkRowStack";
 
 import { KeyboardArrowUp } from "@styled-icons/material-outlined/KeyboardArrowUp";
 
+const pulse = keyframes`
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+`;
+
 const FooterContainer = styled.footer`
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	flex-direction: column;
-	width: 100%;
-	margin-top: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 40px;
+    padding: 0 20px;
+`;
 
-	#grid {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		grid-template-rows: 1fr;
-		grid-column-gap: 20px;
-		grid-row-gap: 0px;
-		transition: all 0.3s ease;
-		width: 60%;
-		text-align: center;
+const FooterContent = styled.div`
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: min(1200px, 100%);
+    padding: 60px 0;
+    gap: 40px;
+    flex-wrap: wrap;
 
-		@media (max-width: 1200px) {
-			width: 80%;
-		}
+    @media (max-width: 900px) {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+`;
 
-		@media (max-width: 1000px) {
-			grid-template-columns: repeat(3, 1fr);
-		}
+const BrandSection = styled.div`
+    display: flex;
+    flex-direction: column;
+    max-width: 350px;
 
-		@media (max-width: 800px) {
-			grid-template-columns: repeat(2, 1fr);
-		}
+    @media (max-width: 900px) {
+        align-items: center;
+        max-width: 100%;
+    }
+`;
 
-		@media (max-width: 601px) {
-			width: 100%;
-			grid-template-columns: repeat(1, 1fr);
-		}
-	}
+const BrandName = styled.h3`
+    font-size: 24px;
+    font-weight: 900;
+    color: ${(props) => props.theme.colors.title};
+    margin: 0 0 8px 0;
+    
+    span {
+        background: linear-gradient(135deg, ${(props) => props.theme.colors.branding} 0%, #00d4ff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+`;
+
+const BrandTagline = styled.p`
+    color: ${(props) => props.theme.colors.body};
+    font-size: 14px;
+    line-height: 1.7;
+    margin: 0 0 20px 0;
+`;
+
+const LinksSection = styled.div`
+    display: flex;
+    gap: 60px;
+
+    @media (max-width: 600px) {
+        flex-direction: column;
+        gap: 32px;
+    }
+`;
+
+const LinkColumn = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+`;
+
+const LinkTitle = styled.h4`
+    color: ${(props) => props.theme.colors.branding};
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0 8px 0;
+`;
+
+const FooterLink = styled.a`
+    color: ${(props) => props.theme.colors.body};
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+
+    &:hover {
+        color: ${(props) => props.theme.colors.branding};
+        transform: translateX(4px);
+    }
 `;
 
 const Divider = styled.div`
-	width: 100%;
-	border-top: 1px solid ${(props) => props.theme.colors.backgroundSecondary};
-	margin-top: 20px;
+    width: min(1200px, 100%);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, ${(props) => props.theme.colors.backgroundSecondary}, transparent);
 `;
 
-const SectionFooterMenu = styled.div`
-	display: flex;
-	align-content: center;
-	justify-content: flex-start;
-	flex-direction: column;
-	width: 100%;
-	height: 100%;
-	//border: 1px solid #000;
-	padding: 5px;
+const BottomBar = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: min(1200px, 100%);
+    padding: 24px 0;
+    gap: 20px;
+
+    @media (max-width: 600px) {
+        flex-direction: column;
+        text-align: center;
+    }
 `;
 
-const BrandFooterWrapper = styled.div`
-	display: flex;
-	align-content: flex-start;
-	justify-content: flex-start;
-	flex-direction: column;
-	width: 100%;
-	height: 100%;
-	//border: 1px solid #000;
-	padding: 5px;
-
-	span {
-		color: ${(props) => props.theme.colors.body};
-		margin: 10px 0;
-		text-align: left;
-		font-size: 16px;
-	}
-
-	@media (max-width: 601px) {
-		padding: 0 30px;
-
-		span {
-			text-align: center;
-			margin: 20px 0;
-		}
-	}
+const Copyright = styled.span`
+    color: ${(props) => props.theme.colors.subtitle};
+    font-size: 14px;
 `;
 
-const FooterTextTitle = styled.h4`
-	font-weight: 800;
-	color: ${(props) => props.theme.colors.branding};
+const MadeWith = styled.span`
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: ${(props) => props.theme.colors.subtitle};
+    font-size: 14px;
+
+    .heart {
+        color: #ff6b6b;
+        animation: ${pulse} 1.5s ease-in-out infinite;
+    }
 `;
 
-const FooterBrandTextTitle = styled.h4`
-	font-weight: 800;
-	color: ${(props) => props.theme.colors.branding};
-	text-align: left;
+const BackToTop = styled.button`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: ${(props) => props.theme.colors.backgroundSecondary};
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
 
-	@media (max-width: 601px) {
-		text-align: center;
-	}
+    &:hover {
+        border-color: ${(props) => props.theme.colors.branding};
+        transform: translateY(-4px);
+    }
+
+    svg {
+        color: ${(props) => props.theme.colors.branding};
+        width: 24px;
+        height: 24px;
+    }
 `;
 
-const FooterText = styled.span`
-	position: relative;
-	font-weight: 400;
-	font-size: 16px;
-	color: ${(props) => props.theme.colors.body};
-	/* transition: all 0.3s ease; */
-	margin-top: 3px;
-	margin-bottom: 3px;
-	text-transform: capitalize;
+const TechStack = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
 
-	&:hover {
-		cursor: pointer;
-		color: ${(props) => props.theme.colors.branding};
-	}
-
-	/* &::before,
-	&::after {
-		content: "";
-		position: absolute;
-		left: 0;
-		right: 0;
-		height: 2px;
-		background-color: ${(props) => props.theme.colors.branding};
-		transform: scaleX(0);
-		transition: transform 0.5s ease;
-	}
-
-	&::before {
-		top: 0;
-		transform-origin: center right;
-	}
-
-	&:hover::before {
-		transform-origin: center left;
-		transform: scaleX(1);
-	}
-
-	&::after {
-		bottom: 0;
-		transform-origin: center left;
-	}
-
-	&:hover::after {
-		transform-origin: center right;
-		transform: scaleX(1);
-	} */
+    @media (max-width: 900px) {
+        justify-content: center;
+    }
 `;
 
-const FooterTextExternalLink = styled.a`
-	position: relative;
-	font-weight: 400;
-	font-size: 14px;
-	color: ${(props) => props.theme.colors.body};
-	transition: all 0.3s ease;
-	margin-top: 3px;
-	margin-bottom: 3px;
-	text-decoration: none;
-
-	&:hover {
-		color: ${(props) => props.theme.colors.branding};
-	}
-
-	&::before,
-	&::after {
-		content: "";
-		position: absolute;
-		left: 0;
-		right: 0;
-		height: 2px;
-		background-color: ${(props) => props.theme.colors.branding};
-		transform: scaleX(0);
-		transition: transform 0.5s ease;
-	}
-
-	/* &::before {
-		top: 0;
-		transform-origin: center right;
-	}
-
-	&:hover::before {
-		transform-origin: center left;
-		transform: scaleX(1);
-	}
-
-	&::after {
-		bottom: 0;
-		transform-origin: center left;
-	}
-
-	&:hover::after {
-		transform-origin: center right;
-		transform: scaleX(1);
-	} */
-`;
-
-const TextBuildProject = styled.h4`
-	font-weight: 800;
-	color: ${(props) => props.theme.colors.branding};
-	font-size: 14px;
-
-	span {
-		font-weight: 400;
-	}
-`;
-
-const ContainerBuildCopyright = styled.div`
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	margin-bottom: 10px;
-	transition: all 0.3s ease;
-	width: 60%;
-	margin-top: 20px;
-	margin-bottom: 20px;
-
-	.build-and-button-top {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	span {
-		color: ${(props) => props.theme.colors.body};
-		font-size: 14px;
-	}
-
-	@media (max-width: 1200px) {
-		width: 80%;
-	}
-
-	@media (max-width: 601px) {
-		flex-direction: column;
-		margin-bottom: 110px;
-
-		span {
-			margin-bottom: 10px;
-		}
-	}
-
-	@media (max-width: 425px) {
-		width: 100%;
-	}
-`;
-
-const ButtonUpToTop = styled.div`
-	/* position: fixed; */
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border-radius: 4px;
-	width: 32px;
-	height: 32px;
-	bottom: 20px;
-	right: 20px;
-	z-index: 1;
-	background-color: ${(props) => props.theme.colors.backgroundSecondary};
-	transition: all 0.1s ease;
-	margin-left: 15px;
-
-	&:hover {
-		cursor: pointer;
-		border: 2px solid ${(props) => props.theme.colors.branding};
-	}
-
-	svg {
-		color: ${(props) => props.theme.colors.branding};
-		width: 24px;
-		height: 24px;
-	}
+const TechBadge = styled.span`
+    padding: 4px 12px;
+    background: ${(props) => props.theme.colors.backgroundSecondary};
+    border-radius: 20px;
+    font-size: 12px;
+    color: ${(props) => props.theme.colors.subtitle};
 `;
 
 export default function FooterPage(props) {
@@ -280,7 +192,7 @@ export default function FooterPage(props) {
 	const [version, setVersion] = useState("");
 
 	useEffect(() => {
-		setVersion("1.0.0");
+		setVersion("2.0.0");
 	}, []);
 
 	const goToTop = () => {
@@ -294,20 +206,62 @@ export default function FooterPage(props) {
 
 	return (
 		<FooterContainer>
-			<Divider />
-			<ContainerBuildCopyright>
-				{/* <SocialNetworkRowStack /> */}
+			<FooterContent>
+				<BrandSection>
+					<BrandName>
+						Muzammil <span>Javed</span>
+					</BrandName>
+					<BrandTagline>
+						AI & Machine Learning Engineer crafting intelligent systems
+						that transform how we interact with technology.
+					</BrandTagline>
+					<SocialNetworkRowStack />
+				</BrandSection>
 
-				<span>© 2025 Copyright. All rights reserved.</span>
-				<div className="build-and-button-top">
-					<TextBuildProject>
-						{language.footer.labelBuildVersion}: {version || ""}
-					</TextBuildProject>
-					<ButtonUpToTop onClick={goToTop}>
-						<KeyboardArrowUp />
-					</ButtonUpToTop>
-				</div>
-			</ContainerBuildCopyright>
+				<LinksSection>
+					<LinkColumn>
+						<LinkTitle>Navigation</LinkTitle>
+						<FooterLink href="#section-home">Home</FooterLink>
+						<FooterLink href="#section-about">About</FooterLink>
+						<FooterLink href="#section-services">Services</FooterLink>
+						<FooterLink href="#section-portifolio">Projects</FooterLink>
+						<FooterLink href="#section-experience">Experience</FooterLink>
+					</LinkColumn>
+
+					<LinkColumn>
+						<LinkTitle>Connect</LinkTitle>
+						<FooterLink href="https://github.com/MUZAMMIL-JAVED" target="_blank">GitHub</FooterLink>
+						<FooterLink href="https://www.linkedin.com/in/muzammil-javed-655297203/" target="_blank">LinkedIn</FooterLink>
+						<FooterLink href="https://www.facebook.com/muzammil.javed.925" target="_blank">Facebook</FooterLink>
+						<FooterLink href="mailto:muzammiljavedd@gmail.com">Email</FooterLink>
+					</LinkColumn>
+
+					<LinkColumn>
+						<LinkTitle>Built With</LinkTitle>
+						<TechStack>
+							<TechBadge>React</TechBadge>
+							<TechBadge>Next.js</TechBadge>
+							<TechBadge>Styled Components</TechBadge>
+						</TechStack>
+					</LinkColumn>
+				</LinksSection>
+			</FooterContent>
+
+			<Divider />
+
+			<BottomBar>
+				<Copyright>
+					© {new Date().getFullYear()} Muzammil Javed. All rights reserved.
+				</Copyright>
+
+				<MadeWith>
+					Made with <span className="heart">❤️</span> in Pakistan 🇵🇰
+				</MadeWith>
+
+				<BackToTop onClick={goToTop} aria-label="Back to top">
+					<KeyboardArrowUp />
+				</BackToTop>
+			</BottomBar>
 		</FooterContainer>
 	);
 }
