@@ -1,18 +1,15 @@
 import React, { useContext } from "react";
-// Link import removed because the Learn More button was deleted
 
 //Third's librarys
 import styled from "styled-components";
 import { useTheme } from "styled-components";
 import dynamic from "next/dynamic";
-// Avoid SSR import-time window access from react-progressbar-on-scroll
 const ProgressBar = dynamic(() => import("react-progressbar-on-scroll"), { ssr: false });
 
 //Custom components
 import Head from "@/components/Head";
 import FloatNavigationBar from "@/components/FloatNavigationBar";
-// import ScrollDownAnimation from "@/components/ScrollDownAnimation";
-//import SocialNetworkRowStack from "@/components/SocialNetworkRowStack";
+
 
 //UI Components
 import { FluidContainer } from "@/styles/ui";
@@ -20,7 +17,7 @@ import { FluidContainer } from "@/styles/ui";
 //Contexto
 import { SettingsContext } from "@/context/SettingsContext";
 
-// CV file public URL (avoid importing from public in SSR)
+// CV file public URL 
 const cvFile = "/pdf/MJ.CV.pdf";
 
 const LandingPageContainer = styled.div`
@@ -75,9 +72,7 @@ const SubTitleLanding = styled.div`
     }
 `;
 
-// Removed landing animation container since animation is no longer used
 
-// Removed "Learn more" button styles
 
 const ButtonDownloadCV = styled.button`
 	z-index: 1;
@@ -175,7 +170,6 @@ const HelloImage = styled.img`
     }
 `;
 
-// Removed chip techs to simplify the hero per the new design
 
 const WrapperButtons = styled.div`
     display: flex;
@@ -254,18 +248,18 @@ export default function HomePage() {
     const theme = useTheme();
     const { language } = useContext(SettingsContext);
 
-	const handleDownload = () => {
-		const link = document.createElement("a");
-		link.href = cvFile;
-		link.download = "MJ.CV.pdf";
-		document.body.appendChild(link);
-		link.click();
-		document.body.removeChild(link);
-	};
+    const handleDownload = () => {
+        const link = document.createElement("a");
+        link.href = cvFile;
+        link.download = "MJ.CV.pdf";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
 
-	return (
-		<FluidContainer id="section-home" hasMinHeight>
-			<SectionHomePage>
+    return (
+        <FluidContainer id="section-home" hasMinHeight>
+            <SectionHomePage>
                 <FloatNavigationBar />
                 <ProgressBar color={theme.colors.branding} height={5} />
                 <Head
@@ -275,8 +269,8 @@ export default function HomePage() {
                 />
                 <LandingPageContainer>
                     <TitleLandingContainer>
-                        {/* Bold the developer name for pixel-perfect match */}
-                        {/* Using a separate styled span ensures only the name is bold */}
+                        { }
+                        { }
                         <IntroText>
                             <HelloImage src="/images/hello.png" alt="Hello" /> Hey, I'm <DeveloperName>{language.landingPage.firstTypeText}</DeveloperName>
                         </IntroText>
@@ -286,12 +280,12 @@ export default function HomePage() {
                         <SubTitleLanding>Crafting And Breaking The Internet Daily</SubTitleLanding>
                         <WrapperButtons>
                             <VisitWorkButton href={cvFile} download="MJ.CV.pdf">DOWNLOAD CV</VisitWorkButton>
-                </WrapperButtons>
-                        {/* Trusted message removed */}
+                        </WrapperButtons>
+                        { }
                     </TitleLandingContainer>
-                    {/* Removed landing animation component */}
+                    { }
                 </LandingPageContainer>
-                {/* <ScrollDownAnimation /> */}
+                { }
             </SectionHomePage>
         </FluidContainer>
     );

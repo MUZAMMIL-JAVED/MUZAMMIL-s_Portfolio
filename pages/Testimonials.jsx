@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import dynamic from "next/dynamic";
-// react-fast-marquee relies on browser APIs; load client-side only
 const Marquee = dynamic(() => import("react-fast-marquee"), { ssr: false });
 
 //Contexto
@@ -198,7 +197,7 @@ const testimonials = [
     {
         quote:
             "Pixel-accurate delivery with thoughtful refactors. It’s a modern, reliable showcase of work.",
-        name: "Haroon Majeed",
+        name: "Muzammil Javed",
         role: "Engineer",
         stars: 4,
     },
@@ -211,7 +210,7 @@ export default function Testimonials() {
         <Section id="testimonials">
             <TitleSection title={language.testimonialPage.title} subtitle={language.testimonialPage.subtitle} hasMarginBottom />
 
-            {/* Reduce flicker by disabling gradient mask and lowering speed */}
+            { }
             <Marquee autoFill gradient={false} pauseOnHover direction="left" speed={30}>
                 {testimonials.map((t, index) => (
                     <Testimonial key={index}>

@@ -5,7 +5,6 @@ import AboutPage from "./about";
 import PortfolioPage from "./portfolio";
 import ExperiencePage from "./experience";
 import HomePage from "./homepage";
-// import Faq from "./faq";
 import Testimonials from "./Testimonials";
 
 //Components

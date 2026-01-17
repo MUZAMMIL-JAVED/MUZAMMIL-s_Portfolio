@@ -9,7 +9,6 @@ import { SettingsContext } from "@/context/SettingsContext";
 //Ícones
 import { Robot } from "@styled-icons/fa-solid/Robot";
 import { Java } from "@styled-icons/fa-brands/Java";
-// import { Amazonaws } from "@styled-icons/simple-icons/Amazonaws";
 import { GoogleCloud } from "@styled-icons/boxicons-logos/GoogleCloud";
 import { Firebase } from "@styled-icons/boxicons-logos/Firebase";
 import { Mongodb } from "@styled-icons/simple-icons/Mongodb";
@@ -17,7 +16,6 @@ import { Sqlite } from "@styled-icons/simple-icons/Sqlite";
 import { Javascript } from "@styled-icons/boxicons-logos/Javascript";
 import { ReactLogo } from "@styled-icons/boxicons-logos/ReactLogo";
 import { Nextdotjs } from "@styled-icons/simple-icons/Nextdotjs";
-// import { Python } from "@styled-icons/boxicons-logos/Python";
 import { Nodejs } from "@styled-icons/boxicons-logos/Nodejs";
 import { LogoVercel } from "@styled-icons/ionicons-solid/LogoVercel";
 import { Styledcomponents } from "@styled-icons/simple-icons/Styledcomponents";
@@ -27,14 +25,11 @@ import { Typescript } from "@styled-icons/simple-icons/Typescript";
 import { Sass } from "@styled-icons/fa-brands/Sass";
 import { Expo } from "@styled-icons/simple-icons/Expo";
 import { Jest } from "@styled-icons/simple-icons/Jest";
-// import { Leaflet } from "@styled-icons/simple-icons/Leaflet";
-// import { Express } from "@styled-icons/simple-icons/Express";
-// import { Flutter } from "@styled-icons/boxicons-logos/Flutter";
+
 import { Svelte } from "@styled-icons/simple-icons/Svelte";
 
 //Custom components
 import Tooltip from "@/components/Tooltip";
-// import TitleSection from "@/components/TitleSection";
 import CardProject from "@/components/CardProject";
 
 const ContainerGrid = styled.div`
@@ -164,10 +159,9 @@ const ProjectsFooterCTA = styled.a`
     }
 `;
 
-// Modal removed as part of the redesign
 
 export default function Portifolio() {
-    const { language } = useContext(SettingsContext);
+	const { language } = useContext(SettingsContext);
 
 	const projects = useMemo(
 		() => [
@@ -194,7 +188,7 @@ export default function Portifolio() {
 				title: language.portifolioPage.projects.id_23.title,
 				description: language.portifolioPage.projects.id_23.description,
 				liveDemoUrl: "https://www.prodosdigital.com.br/",
-            imageSourcePath: "/images/portfolio-projects/prodos-digital.png",
+				imageSourcePath: "/images/portfolio-projects/prodos-digital.png",
 				techs: [
 					<Tooltip toolTipText="React.JS">
 						<ReactLogo />
@@ -236,7 +230,7 @@ export default function Portifolio() {
 				title: language.portifolioPage.projects.id_2.title,
 				description: language.portifolioPage.projects.id_2.description,
 				liveDemoUrl: null,
-            imageSourcePath: "/images/portfolio-projects/devradar.png",
+				imageSourcePath: "/images/portfolio-projects/devradar.png",
 				techs: [
 					<Tooltip toolTipText="ReactJS">
 						<ReactLogo />
@@ -266,7 +260,7 @@ export default function Portifolio() {
 				title: language.portifolioPage.projects.id_3.title,
 				description: language.portifolioPage.projects.id_3.description,
 				liveDemoUrl: null,
-            imageSourcePath: "/images/portfolio-projects/be-the-hero.png",
+				imageSourcePath: "/images/portfolio-projects/be-the-hero.png",
 				techs: [
 					<Tooltip toolTipText="ReactJS">
 						<ReactLogo />
@@ -297,30 +291,14 @@ export default function Portifolio() {
 				typeProject: ["BACKEND", "WEB", "MOBILE"],
 				created_at: "26/04/2020",
 			},
-			// {
-			// 	id: 4,
-			// 	title: language.portifolioPage.projects.id_4.title,
-			// 	description: language.portifolioPage.projects.id_4.description,
-			// 	liveDemoUrl: null,
-			// 	imageSourcePath: null,
-			// 	techs: [
-			// 		<Tooltip toolTipText="NodeJS">
-			// 			<Nodejs />
-			// 		</Tooltip>,
-			// 		<Tooltip toolTipText="Javascript">
-			// 			<Javascript />
-			// 		</Tooltip>,
-			// 	],
-			// 	sourceCodeLink: "https://github.com/Glaysonvisgueira/inthegra-nodejs",
-			// 	typeProject: ["BACKEND"],
-			// 	created_at: "04/04/2020",
-			// },
+
+
 			{
 				id: 5,
 				title: language.portifolioPage.projects.id_5.title,
 				description: language.portifolioPage.projects.id_5.description,
 				liveDemoUrl: null,
-            imageSourcePath: "/images/portfolio-projects/letmeask.png",
+				imageSourcePath: "/images/portfolio-projects/letmeask.png",
 				techs: [
 					<Tooltip toolTipText="ReactJs">
 						<ReactLogo />
@@ -347,7 +325,7 @@ export default function Portifolio() {
 				title: language.portifolioPage.projects.id_6.title,
 				description: language.portifolioPage.projects.id_6.description,
 				liveDemoUrl: null,
-            imageSourcePath: "/images/portfolio-projects/plantmanager.png",
+				imageSourcePath: "/images/portfolio-projects/plantmanager.png",
 				techs: [
 					<Tooltip toolTipText="ReactJS">
 						<ReactLogo />
@@ -363,54 +341,7 @@ export default function Portifolio() {
 				typeProject: ["MOBILE"],
 				created_at: "19/04/2021",
 			},
-			// {
-			// 	id: 7,
-			// 	title: language.portifolioPage.projects.id_7.title,
-			// 	description: language.portifolioPage.projects.id_7.description,
-			// 	liveDemoUrl: null,
-			// 	imageSourcePath: null,
-			// 	techs: [
-			// 		<Tooltip toolTipText="NodeJS">
-			// 			<Nodejs />
-			// 		</Tooltip>,
-			// 		<Tooltip toolTipText="Typescript">
-			// 			<Typescript />
-			// 		</Tooltip>,
-			// 		<Tooltip toolTipText="SqLite">
-			// 			<Sqlite />
-			// 		</Tooltip>,
-			// 		<Tooltip toolTipText="Jest">
-			// 			<Jest />
-			// 		</Tooltip>,
-			// 	],
-			// 	sourceCodeLink: "https://github.com/Glaysonvisgueira/next-level-week-04-nodejs",
-			// 	typeProject: ["BACKEND"],
-			// 	created_at: "23/02/2021",
-			// },
-			// {
-			// 	id: 8,
-			// 	title: language.portifolioPage.projects.id_8.title,
-			// 	description: language.portifolioPage.projects.id_8.description,
-			// 	liveDemoUrl: null,
-			// 	imageSourcePath: null,
-			// 	techs: [
-			// 		<Tooltip toolTipText="NodeJS">
-			// 			<Nodejs />
-			// 		</Tooltip>,
-			// 		<Tooltip toolTipText="Javascript">
-			// 			<Javascript />
-			// 		</Tooltip>,
-			// 		<Tooltip toolTipText="MongoDB">
-			// 			<Mongodb />
-			// 		</Tooltip>,
-			// 		<Tooltip toolTipText="AWS">
-			// 			<Amazonaws />
-			// 		</Tooltip>,
-			// 	],
-			// 	sourceCodeLink: "https://github.com/Glaysonvisgueira/api-fasttrack",
-			// 	typeProject: ["BACKEND"],
-			// 	created_at: "27/11/2020",
-			// },
+
 			{
 				id: 9,
 				title: language.portifolioPage.projects.id_9.title,
@@ -432,27 +363,12 @@ export default function Portifolio() {
 				typeProject: ["MOBILE", "BACKEND"],
 				created_at: "05/05/2020",
 			},
-			// {
-			// 	id: 10,
-			// 	title: language.portifolioPage.projects.id_10.title,
-			// 	description: language.portifolioPage.projects.id_10.description,
-			// 	liveDemoUrl: null,
-			// 	imageSourcePath: null,
-			// 	techs: [
-			// 		<Tooltip toolTipText="Python">
-			// 			<Python />
-			// 		</Tooltip>,
-			// 	],
-			// 	sourceCodeLink: "https://github.com/Glaysonvisgueira/crawlerRadaresVelocidade",
-			// 	typeProject: ["BACKEND"],
-			// 	created_at: "16/06/2019",
-			// },
 			{
 				id: 11,
 				title: language.portifolioPage.projects.id_11.title,
 				description: language.portifolioPage.projects.id_11.description,
 				liveDemoUrl: "https://glaysonvisgueira.vercel.app/",
-            imageSourcePath: "/images/portfolio-projects/portfolio-page.png",
+				imageSourcePath: "/images/portfolio-projects/portfolio-page.png",
 				techs: [
 					<Tooltip toolTipText="ReactJS">
 						<ReactLogo />
@@ -471,69 +387,13 @@ export default function Portifolio() {
 				typeProject: ["WEB"],
 				created_at: "10/06/2022",
 			},
-			// {
-			// 	id: 12,
-			// 	title: language.portifolioPage.projects.id_12.title,
-			// 	description: language.portifolioPage.projects.id_12.description,
-			// 	liveDemoUrl: null,
-			// 	imageSourcePath: null,
-			// 	techs: [
-			// 		<Tooltip toolTipText="ReactJS">
-			// 			<ReactLogo />
-			// 		</Tooltip>,
-			// 		<Tooltip toolTipText="Leaflet">
-			// 			<Leaflet />
-			// 		</Tooltip>,
-			// 	],
-			// 	sourceCodeLink: "https://github.com/Glaysonvisgueira/dashboard-control-mobile-implantacao",
-			// 	typeProject: ["WEB", "BACKEND"],
-			// 	created_at: "29/06/2021",
-			// },
-			// {
-			// 	id: 13,
-			// 	title: language.portifolioPage.projects.id_13.title,
-			// 	description: language.portifolioPage.projects.id_13.description,
-			// 	liveDemoUrl: null,
-			// 	imageSourcePath: null,
-			// 	techs: [
-			// 		<Tooltip toolTipText="NodeJS">
-			// 			<Nodejs />
-			// 		</Tooltip>,
-			// 		<Tooltip toolTipText="AWS">
-			// 			<Amazonaws />
-			// 		</Tooltip>,
-			// 		<Tooltip toolTipText="Express">
-			// 			<Express />
-			// 		</Tooltip>,
-			// 		<Tooltip toolTipText="MongoDB">
-			// 			<Mongodb />
-			// 		</Tooltip>,
-			// 	],
-			// 	sourceCodeLink: "https://github.com/Glaysonvisgueira/controlmobile-dashboard-api",
-			// 	typeProject: ["BACKEND"],
-			// 	created_at: "02/07/2021",
-			// },
-			// {
-			// 	id: 14,
-			// 	title: language.portifolioPage.projects.id_14.title,
-			// 	description: language.portifolioPage.projects.id_14.description,
-			// 	liveDemoUrl: null,
-			// 	imageSourcePath: null,
-			// 	techs: [
-			// 		<Tooltip toolTipText="Flutter">
-			// 			<Flutter />
-			// 		</Tooltip>,
-			// 	],
-			// 	sourceCodeLink: "https://github.com/Glaysonvisgueira/controlmobile-dashboard-api",
-			// 	typeProject: ["MOBILE"],
-			// 	created_at: "13/08/2022",
-			// },
+
 			{
 				id: 15,
 				title: language.portifolioPage.projects.id_15.title,
 				description: language.portifolioPage.projects.id_15.description,
 				liveDemoUrl: "https://calculadora-svelte-liart.vercel.app/",
-            imageSourcePath: "/images/portfolio-projects/svelt-calculadora.png",
+				imageSourcePath: "/images/portfolio-projects/svelt-calculadora.png",
 				techs: [
 					<Tooltip toolTipText="Svelte">
 						<Svelte />
@@ -554,7 +414,7 @@ export default function Portifolio() {
 				title: language.portifolioPage.projects.id_16.title,
 				description: language.portifolioPage.projects.id_16.description,
 				liveDemoUrl: "https://layout-mui-boilerplate.vercel.app/dashboards",
-            imageSourcePath: "/images/portfolio-projects/mui-v5-layout-dashboard.png",
+				imageSourcePath: "/images/portfolio-projects/mui-v5-layout-dashboard.png",
 				techs: [
 					<Tooltip toolTipText="React.JS">
 						<ReactLogo />
@@ -597,33 +457,13 @@ export default function Portifolio() {
 				typeProject: ["MOBILE"],
 				created_at: "10/04/2023",
 			},
-			// {
-			// 	id: 19,
-			// 	title: language.portifolioPage.projects.id_19.title,
-			// 	description: language.portifolioPage.projects.id_19.description,
-			// 	liveDemoUrl: null,
-			// 	imageSourcePath: null,
-			// 	techs: [
-			// 		<Tooltip toolTipText="Firebase">
-			// 			<Firebase />
-			// 		</Tooltip>,
-			// 		<Tooltip toolTipText="Javascript">
-			// 			<Javascript />
-			// 		</Tooltip>,
-			// 		<Tooltip toolTipText="NodeJS">
-			// 			<Nodejs />
-			// 		</Tooltip>,
-			// 	],
-			// 	sourceCodeLink: "https://github.com/Glaysonvisgueira/firebase-nodejs-api",
-			// 	typeProject: ["BACKEND"],
-			// 	created_at: "27/03/2023",
-			// },
+
 			{
 				id: 20,
 				title: language.portifolioPage.projects.id_20.title,
 				description: language.portifolioPage.projects.id_20.description,
 				liveDemoUrl: "https://material-ui-v6-dashboards-test.vercel.app/",
-            imageSourcePath: "/images/portfolio-projects/mui-v6-layout-dashboard.png",
+				imageSourcePath: "/images/portfolio-projects/mui-v6-layout-dashboard.png",
 				techs: [
 					<Tooltip toolTipText="React">
 						<ReactLogo />
@@ -641,7 +481,7 @@ export default function Portifolio() {
 				title: language.portifolioPage.projects.id_21.title,
 				description: language.portifolioPage.projects.id_21.description,
 				liveDemoUrl: "https://state-management-jotai-vs-zustand.vercel.app",
-            imageSourcePath: "/images/portfolio-projects/state-management.png",
+				imageSourcePath: "/images/portfolio-projects/state-management.png",
 				techs: [
 					<Tooltip toolTipText="React">
 						<ReactLogo />
@@ -660,7 +500,7 @@ export default function Portifolio() {
 				title: language.portifolioPage.projects.id_22.title,
 				description: language.portifolioPage.projects.id_22.description,
 				liveDemoUrl: "https://www.cedulapromotora.com.br",
-                imageSourcePath: "/images/portfolio-projects/landing-cedula-promotora.png",
+				imageSourcePath: "/images/portfolio-projects/landing-cedula-promotora.png",
 				techs: [
 					<Tooltip toolTipText="React">
 						<ReactLogo />
@@ -677,62 +517,61 @@ export default function Portifolio() {
 		[]
 	);
 
-    // Ordered list to match attached portfolio images and titles
-    const orderedProjects = [
-        { id: 1, title: "Finance", category: "Web development", linkUrl: null, description: "A modern dashboard for tracking expenses, revenue and budgets with clean charts and card summaries.", imageSourcePath: "/images/portfolio-projects/project-1.jpg", techs: [] },
-        { id: 2, title: "Orizon", category: "Web development", linkUrl: null, description: "Analytics overview that highlights portfolio KPIs, conversions and growth trends in a crisp, bright UI.", imageSourcePath: "/images/portfolio-projects/project-2.png", techs: [] },
-        { id: 3, title: "Weather App", category: "Mobile application", linkUrl: null, description: "Multi-panel weather interface with hourly and weekly forecasts, designed for fast, glanceable insights.", imageSourcePath: "/images/portfolio-projects/project-3.png", techs: [] },
-        { id: 4, title: "MOVIES APP", category: "Mobile application", linkUrl: null, description: "Movie discovery experience featuring rich posters, grid browsing and clean detail pages for titles you love.", imageSourcePath: "/images/portfolio-projects/project-4.png", techs: [] },
-        { id: 5, title: "AR E-Commerce", category: "Mobile application", linkUrl: null, description: "Concept screens for an AR-powered shopping flow—preview products, compare and move smoothly to checkout.", imageSourcePath: "/images/portfolio-projects/project-5.jpg", techs: [] },
-        { id: 6, title: "Open Reads", category: "Mobile application", linkUrl: null, description: "Book browsing layouts with large visuals and long-form descriptions, crafted for a calm reading feel.", imageSourcePath: "/images/portfolio-projects/project-6.jpg", techs: [] },
-        { id: 7, title: "Open Reads", category: "Mobile application", linkUrl: null, description: "An alternate Open Reads set showcasing product pages and mobile listing views in a lightweight design.", imageSourcePath: "/images/portfolio-projects/project-7.jpg", techs: [] },
-        { id: 8, title: "Meditation", category: "Mobile application", linkUrl: null, description: "Mindfulness app screens including sessions, streak tracking and guided prompts to help you focus.", imageSourcePath: "/images/portfolio-projects/project-8.jpg", techs: [] },
-        { id: 9, title: "Music App", category: "Mobile application", linkUrl: null, description: "Streamlined music UI with playlists, album views and player controls optimized for mobile.", imageSourcePath: "/images/portfolio-projects/project-9.jpg", techs: [] },
-        { id: 10, title: "StoryPad", category: "Mobile application", linkUrl: null, description: "Note-taking layouts with tags, archives and a distraction-free reading mode for longer notes.", imageSourcePath: "/images/portfolio-projects/project-10.jpg", techs: [] },
-        { id: 11, title: "Shopping App", category: "Mobile application", linkUrl: null, description: "E‑commerce app kit including home feed, product detail, cart and checkout screens.", imageSourcePath: "/images/portfolio-projects/project-11.jpg", techs: [] },
-        { id: 12, title: "Book Search", category: "Mobile application", linkUrl: null, description: "Search-first browsing for books, categories and author pages with concise summaries.", imageSourcePath: "/images/portfolio-projects/project-12.jpg", techs: [] },
-        { id: 13, title: "Translator", category: "Mobile application", linkUrl: "https://github.com/MUZAMMIL-JAVED/R-Translator", description: "Lightweight translator UI with conversational preview and quick language switching.", imageSourcePath: "/images/portfolio-projects/project-13.jpg", techs: [] },
-        { id: 14, title: "Event Mangement", category: "Mobile application", linkUrl: null, description: "Event admin views to create, approve and manage registrations with clear status panels.", imageSourcePath: "/images/portfolio-projects/project-14.jpg", techs: [] },
-        { id: 15, title: "Attendance Mangement System", category: "Mobile application", linkUrl: "https://github.com/MUZAMMIL-JAVED/Attendance_System", description: "Attendance tracking forms and logs with dashboards for daily status and summaries.", imageSourcePath: "/images/portfolio-projects/project-15.jpg", techs: [] },
-        { id: 16, title: "News App", category: "Mobile application", linkUrl: null, description: "Compact news reader with headlines, article previews and a simple, fast navigation.", imageSourcePath: "/images/portfolio-projects/project-16.jpg", techs: [] },
-        { id: 17, title: "Blood Bank App", category: "Mobile application", linkUrl: null, description: "Donation tracking, nearby centers and appointment scheduling flows in a friendly UI.", imageSourcePath: "/images/portfolio-projects/project-17.jpg", techs: [] },
-        { id: 18, title: "Summary", category: "Web development", linkUrl: null, description: "Executive dashboard with KPIs, cards and table snapshots presented in a clean layout.", imageSourcePath: "/images/portfolio-projects/project-18.png", techs: [] },
-        { id: 19, title: "Arrival", category: "Web development", linkUrl: null, description: "Automotive analytics overview—dark theme charts and multi‑screen telemetry views.", imageSourcePath: "/images/portfolio-projects/project-19.png", techs: [] },
-    ];
+	const orderedProjects = [
+		{ id: 1, title: "Finance", category: "Web development", linkUrl: null, description: "A modern dashboard for tracking expenses, revenue and budgets with clean charts and card summaries.", imageSourcePath: "/images/portfolio-projects/project-1.jpg", techs: [] },
+		{ id: 2, title: "Orizon", category: "Web development", linkUrl: null, description: "Analytics overview that highlights portfolio KPIs, conversions and growth trends in a crisp, bright UI.", imageSourcePath: "/images/portfolio-projects/project-2.png", techs: [] },
+		{ id: 3, title: "Weather App", category: "Mobile application", linkUrl: null, description: "Multi-panel weather interface with hourly and weekly forecasts, designed for fast, glanceable insights.", imageSourcePath: "/images/portfolio-projects/project-3.png", techs: [] },
+		{ id: 4, title: "MOVIES APP", category: "Mobile application", linkUrl: null, description: "Movie discovery experience featuring rich posters, grid browsing and clean detail pages for titles you love.", imageSourcePath: "/images/portfolio-projects/project-4.png", techs: [] },
+		{ id: 5, title: "AR E-Commerce", category: "Mobile application", linkUrl: null, description: "Concept screens for an AR-powered shopping flow—preview products, compare and move smoothly to checkout.", imageSourcePath: "/images/portfolio-projects/project-5.jpg", techs: [] },
+		{ id: 6, title: "Open Reads", category: "Mobile application", linkUrl: null, description: "Book browsing layouts with large visuals and long-form descriptions, crafted for a calm reading feel.", imageSourcePath: "/images/portfolio-projects/project-6.jpg", techs: [] },
+		{ id: 7, title: "Open Reads", category: "Mobile application", linkUrl: null, description: "An alternate Open Reads set showcasing product pages and mobile listing views in a lightweight design.", imageSourcePath: "/images/portfolio-projects/project-7.jpg", techs: [] },
+		{ id: 8, title: "Meditation", category: "Mobile application", linkUrl: null, description: "Mindfulness app screens including sessions, streak tracking and guided prompts to help you focus.", imageSourcePath: "/images/portfolio-projects/project-8.jpg", techs: [] },
+		{ id: 9, title: "Music App", category: "Mobile application", linkUrl: null, description: "Streamlined music UI with playlists, album views and player controls optimized for mobile.", imageSourcePath: "/images/portfolio-projects/project-9.jpg", techs: [] },
+		{ id: 10, title: "StoryPad", category: "Mobile application", linkUrl: null, description: "Note-taking layouts with tags, archives and a distraction-free reading mode for longer notes.", imageSourcePath: "/images/portfolio-projects/project-10.jpg", techs: [] },
+		{ id: 11, title: "Shopping App", category: "Mobile application", linkUrl: null, description: "E‑commerce app kit including home feed, product detail, cart and checkout screens.", imageSourcePath: "/images/portfolio-projects/project-11.jpg", techs: [] },
+		{ id: 12, title: "Book Search", category: "Mobile application", linkUrl: null, description: "Search-first browsing for books, categories and author pages with concise summaries.", imageSourcePath: "/images/portfolio-projects/project-12.jpg", techs: [] },
+		{ id: 13, title: "Translator", category: "Mobile application", linkUrl: "https://github.com/MUZAMMIL-JAVED/R-Translator", description: "Lightweight translator UI with conversational preview and quick language switching.", imageSourcePath: "/images/portfolio-projects/project-13.jpg", techs: [] },
+		{ id: 14, title: "Event Mangement", category: "Mobile application", linkUrl: null, description: "Event admin views to create, approve and manage registrations with clear status panels.", imageSourcePath: "/images/portfolio-projects/project-14.jpg", techs: [] },
+		{ id: 15, title: "Attendance Mangement System", category: "Mobile application", linkUrl: "https://github.com/MUZAMMIL-JAVED/Attendance_System", description: "Attendance tracking forms and logs with dashboards for daily status and summaries.", imageSourcePath: "/images/portfolio-projects/project-15.jpg", techs: [] },
+		{ id: 16, title: "News App", category: "Mobile application", linkUrl: null, description: "Compact news reader with headlines, article previews and a simple, fast navigation.", imageSourcePath: "/images/portfolio-projects/project-16.jpg", techs: [] },
+		{ id: 17, title: "Blood Bank App", category: "Mobile application", linkUrl: null, description: "Donation tracking, nearby centers and appointment scheduling flows in a friendly UI.", imageSourcePath: "/images/portfolio-projects/project-17.jpg", techs: [] },
+		{ id: 18, title: "Summary", category: "Web development", linkUrl: null, description: "Executive dashboard with KPIs, cards and table snapshots presented in a clean layout.", imageSourcePath: "/images/portfolio-projects/project-18.png", techs: [] },
+		{ id: 19, title: "Arrival", category: "Web development", linkUrl: null, description: "Automotive analytics overview—dark theme charts and multi‑screen telemetry views.", imageSourcePath: "/images/portfolio-projects/project-19.png", techs: [] },
+	];
 
-    const array_projects = useMemo(() => orderedProjects, []);
+	const array_projects = useMemo(() => orderedProjects, []);
 
-    return (
-        <SectionPortifolio id="section-portifolio">
-            <HeaderWrapper>
-                <HeaderLink href="#">Things I Built and Didn't Break</HeaderLink>
-                <HeaderTitle>MY PROJECTS</HeaderTitle>
-            </HeaderWrapper>
+	return (
+		<SectionPortifolio id="section-portifolio">
+			<HeaderWrapper>
+				<HeaderLink href="#">Things I Built and Didn't Break</HeaderLink>
+				<HeaderTitle>MY PROJECTS</HeaderTitle>
+			</HeaderWrapper>
 
-            <ContainerGrid>
-                {array_projects?.map((project, index) => (
-                    <Fade triggerOnce key={index} style={{ height: "100%" }}>
-                        <CardProject
-                            title={project.title}
-                            description={project.description}
-                            techs={project.techs}
-                            imageSourcePath={project.imageSourcePath}
-                            category={project.category}
-                            linkUrl={project.linkUrl}
-                        />
-                    </Fade>
-                ))}
-            </ContainerGrid>
+			<ContainerGrid>
+				{array_projects?.map((project, index) => (
+					<Fade triggerOnce key={index} style={{ height: "100%" }}>
+						<CardProject
+							title={project.title}
+							description={project.description}
+							techs={project.techs}
+							imageSourcePath={project.imageSourcePath}
+							category={project.category}
+							linkUrl={project.linkUrl}
+						/>
+					</Fade>
+				))}
+			</ContainerGrid>
 
-            <ProjectsFooterCTA
-                href="https://github.com/MUZAMMIL-JAVED"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Visit GitHub to check more projects"
-                title="Visit GitHub for more projects"
-            >
-                Visit GitHub to check more projects
-            </ProjectsFooterCTA>
-        </SectionPortifolio>
-    );
+			<ProjectsFooterCTA
+				href="https://github.com/MUZAMMIL-JAVED"
+				target="_blank"
+				rel="noopener noreferrer"
+				aria-label="Visit GitHub to check more projects"
+				title="Visit GitHub for more projects"
+			>
+				Visit GitHub to check more projects
+			</ProjectsFooterCTA>
+		</SectionPortifolio>
+	);
 }
