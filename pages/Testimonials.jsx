@@ -3,7 +3,7 @@ import styled from "styled-components";
 import dynamic from "next/dynamic";
 const Marquee = dynamic(() => import("react-fast-marquee"), { ssr: false });
 
-//Contexto
+//Context
 import { SettingsContext } from "@/context/SettingsContext";
 
 //Custom components
