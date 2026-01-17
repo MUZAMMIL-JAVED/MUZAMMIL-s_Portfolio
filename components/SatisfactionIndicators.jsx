@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { Fade } from "react-awesome-reveal";
 import { useTheme } from "styled-components";
 
-//Context
 import { SettingsContext } from "@/context/SettingsContext";
 
 const SectionSatisfactionIndicators = styled.section`

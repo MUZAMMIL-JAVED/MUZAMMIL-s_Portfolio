@@ -4,10 +4,8 @@ import { useTheme } from "styled-components";
 import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 
-//Contexto
 import { SettingsContext } from "@/context/SettingsContext";
 
-//ícones
 import { School } from "@styled-icons/ionicons-outline/School";
 import { LearningApp } from "@styled-icons/fluentui-system-filled/LearningApp";
 import { Work } from "@styled-icons/material-rounded/Work";
@@ -74,7 +72,7 @@ export default function TimelinePortifolio(props) {
 
 	return (
 		<VerticalTimeline lineColor={theme.colors.branding}>
-			{/* Present - AI & Automation (Freelance) */}
+			{ }
 			<VerticalTimelineElement
 				className="vertical-timeline-element--work"
 				contentStyle={{ borderBottom: `4px solid ${theme.colors.branding}`, boxShadow: "0px 0px 0px 0px #ccc", backgroundColor: theme.colors.backgroundSecondary }}
@@ -97,7 +95,7 @@ export default function TimelinePortifolio(props) {
 					</BoldText>
 				</TimelineContent>
 			</VerticalTimelineElement>
-			{/* 2025 - Personal Project (Object Detection & Recognition) */}
+			{ }
 			<VerticalTimelineElement
 				className="vertical-timeline-element--work"
 				contentStyle={{ borderBottom: `4px solid ${theme.colors.branding}`, boxShadow: "0px 0px 0px 0px #ccc", backgroundColor: theme.colors.backgroundSecondary }}
@@ -118,7 +116,7 @@ export default function TimelinePortifolio(props) {
 				</TimelineContent>
 			</VerticalTimelineElement>
 
-			{/* 2025 - Personal Project (Rice Classification) */}
+			{ }
 			<VerticalTimelineElement
 				className="vertical-timeline-element--work"
 				contentStyle={{ borderBottom: `4px solid ${theme.colors.branding}`, boxShadow: "0px 0px 0px 0px #ccc", backgroundColor: theme.colors.backgroundSecondary }}
@@ -139,7 +137,7 @@ export default function TimelinePortifolio(props) {
 				</TimelineContent>
 			</VerticalTimelineElement>
 
-			{/* 2024–2025 - Web & Application Development (NETCLOUD) */}
+			{ }
 			<VerticalTimelineElement
 				className="vertical-timeline-element--work"
 				contentStyle={{ borderBottom: `4px solid ${theme.colors.branding}`, boxShadow: "0px 0px 0px 0px #ccc", backgroundColor: theme.colors.backgroundSecondary }}
@@ -157,7 +155,7 @@ export default function TimelinePortifolio(props) {
 				</TimelineContent>
 			</VerticalTimelineElement>
 
-			{/* 2024 - Client Project (Upwork) */}
+			{ }
 			<VerticalTimelineElement
 				className="vertical-timeline-element--work"
 				contentStyle={{ borderBottom: `4px solid ${theme.colors.branding}`, boxShadow: "0px 0px 0px 0px #ccc", backgroundColor: theme.colors.backgroundSecondary }}
@@ -178,7 +176,7 @@ export default function TimelinePortifolio(props) {
 				</TimelineContent>
 			</VerticalTimelineElement>
 
-			{/* 2024 - Final Year Project (University of Education) */}
+			{ }
 			<VerticalTimelineElement
 				className="vertical-timeline-element--work"
 				contentStyle={{ borderBottom: `4px solid ${theme.colors.branding}`, boxShadow: "0px 0px 0px 0px #ccc", backgroundColor: theme.colors.backgroundSecondary }}

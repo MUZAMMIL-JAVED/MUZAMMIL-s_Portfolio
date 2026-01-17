@@ -1,10 +1,8 @@
 import React, { useEffect, useState, useContext } from "react";
 import styled from "styled-components";
 
-//Contexto
 import { SettingsContext } from "@/context/SettingsContext";
 
-//ícones
 import { DarkMode } from "@styled-icons/material-rounded/DarkMode";
 import { LightDown } from "@styled-icons/entypo/LightDown";
 

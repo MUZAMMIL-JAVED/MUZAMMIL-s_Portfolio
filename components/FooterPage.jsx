@@ -2,13 +2,10 @@ import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 
-//Contexto
 import { SettingsContext } from "@/context/SettingsContext";
 
-//Custom components
 import SocialNetworkRowStack from "@/components/SocialNetworkRowStack";
 
-//Ícones
 import { KeyboardArrowUp } from "@styled-icons/material-outlined/KeyboardArrowUp";
 
 const FooterContainer = styled.footer`
@@ -286,14 +283,14 @@ export default function FooterPage(props) {
 		setVersion("1.0.0");
 	}, []);
 
-    const goToTop = () => {
-        if (typeof window !== "undefined") {
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth",
-            });
-        }
-    };
+	const goToTop = () => {
+		if (typeof window !== "undefined") {
+			window.scrollTo({
+				top: 0,
+				behavior: "smooth",
+			});
+		}
+	};
 
 	return (
 		<FooterContainer>

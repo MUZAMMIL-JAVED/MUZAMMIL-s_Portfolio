@@ -1,7 +1,5 @@
-//Third's librarys
 import styled from "styled-components";
 
-//Custom components
 import CarrouselTechs from "@/components/CarrouselTechs";
 
 const SpaceDiv = styled.div`

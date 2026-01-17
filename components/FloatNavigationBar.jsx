@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 
-//Ícones
 import { Home } from "@styled-icons/heroicons-solid/Home";
 import { Timeline } from "@styled-icons/fluentui-system-regular/Timeline";
 import { FolderBriefcase } from "@styled-icons/fluentui-system-filled/FolderBriefcase";

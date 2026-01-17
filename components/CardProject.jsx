@@ -1,11 +1,8 @@
 import React, { useContext, useCallback } from "react";
 import styled from "styled-components";
-// Use native <img> for rock-solid static delivery on Netlify
 
-//Context
 import { SettingsContext } from "@/context/SettingsContext";
 
-//Icons
 import { NoPhotography } from "@styled-icons/material-outlined";
 
 const Card = styled.div`
@@ -133,18 +130,14 @@ export default function CardProject({ title, description, techs, imageSourcePath
     const onAnchorClick = useCallback(
         (e) => {
             if (!linkUrl) return;
-            // Let the default anchor behavior proceed; add a safe fallback.
             try {
                 const newWindow = window.open(linkUrl, "_blank", "noopener,noreferrer");
                 if (!newWindow) {
-                    // Popup blocked or failed; navigate in the same tab.
                     window.location.href = linkUrl;
                 }
             } catch (err) {
-                // As a last resort, attempt same-tab navigation.
                 window.location.href = linkUrl;
             }
-            // Prevent duplicate opens when anchor also has href+target.
             e.preventDefault();
         },
         [linkUrl]
@@ -154,8 +147,6 @@ export default function CardProject({ title, description, techs, imageSourcePath
         <Card clickable={clickable}>
             <div className="image">
                 {imageSourcePath ? (
-                    // Native image tag avoids Netlify's next/image optimizer and uses direct public paths
-                    // Container provides sizing; CSS applies object-fit: cover
                     <img src={imageSourcePath} alt={`Project image: ${title}`} loading="lazy" />
                 ) : (
                     <NoPhotography />

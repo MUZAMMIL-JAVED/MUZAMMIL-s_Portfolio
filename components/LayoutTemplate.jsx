@@ -1,14 +1,11 @@
 import React, { useContext } from "react";
 
-//Third part librarys
 import Link from "next/link";
 import styled from "styled-components";
 import { Fade } from "react-awesome-reveal";
 
-//Custom components
 import SwitchThemeButton from "@/components/SwitchThemeButton";
 
-//Context
 import { SettingsContext } from "@/context/SettingsContext";
 
 const Main = styled.main`
