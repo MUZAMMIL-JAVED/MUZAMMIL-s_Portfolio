@@ -1,11 +1,13 @@
 [build]
-  command = "npm run build"
-  publish = ".next"
+  command = "npm run build && npx next export"
+  publish = "out"
 
 [build.environment]
   NODE_VERSION = "18"
   NODE_ENV = "production"
   NPM_FLAGS = "--legacy-peer-deps"
 
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

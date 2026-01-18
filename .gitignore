@@ -41,3 +41,6 @@ yarn-error.log*
 /.node22/
 yarn.js
 yarn.lock.bak
+
+# Local Netlify folder
+.netlify
