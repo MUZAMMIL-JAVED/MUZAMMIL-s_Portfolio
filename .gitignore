@@ -33,3 +33,11 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# build artifacts
+/dist/
+
+# bundled tools (not needed)
+/.node22/
+yarn.js
+yarn.lock.bak
