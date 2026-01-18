@@ -17,7 +17,7 @@ import { FluidContainer } from "@/styles/ui";
 import { SettingsContext } from "@/context/SettingsContext";
 
 // CV file public URL 
-const cvFile = "/pdf/MJ.CV.pdf";
+const cvFile = "/pdf/Muzammil_Javed_CV.pdf";
 
 // Animations
 const float = keyframes`
