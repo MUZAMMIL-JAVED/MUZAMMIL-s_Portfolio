@@ -7,6 +7,28 @@
   NODE_ENV = "production"
   NPM_FLAGS = "--legacy-peer-deps"
 
+# Serve static assets directly (PDFs, images, etc.)
+[[redirects]]
+  from = "/pdf/*"
+  to = "/pdf/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/images/*"
+  to = "/images/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/lotties/*"
+  to = "/lotties/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/svg/*"
+  to = "/svg/:splat"
+  status = 200
+
+# SPA fallback for all other routes
 [[redirects]]
   from = "/*"
   to = "/index.html"
